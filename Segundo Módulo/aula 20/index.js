@@ -25,7 +25,7 @@ let cont = 0;
 // }
 
 do {
-    rand = random(1, 100000000);
+    rand = random(1, 100);
     console.log(`${rand}`);
     if (rand !== 10) {
         cont++
