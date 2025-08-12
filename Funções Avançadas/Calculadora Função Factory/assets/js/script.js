@@ -5,13 +5,17 @@ function criaCalculadora(){
         display: document.querySelector('.display'),
         btnClear: document.querySelector('.btn-clear'),
 
-
-
-
-
         inicia: function(){
             this.clickBotoes();
+            this.pressionaEnter();
             
+        },
+        pressionaEnter: function pressionaEnter(){
+            this.display.addEventListener('keyup', e =>{
+                if (e.keyCode === 13) {
+                    this.realizaConta();
+                }
+            });
         },
 
         clickBotoes: function(){
@@ -31,7 +35,7 @@ function criaCalculadora(){
                 }
 
                 if (el.classList.contains('btn-eq')) {
-                    this.realizaConta
+                    this.realizaConta();
                 }
 
             }.bind(this));
@@ -45,7 +49,23 @@ function criaCalculadora(){
         },
         apagaUm: function apagaUm(){
             this.display.value = this.display.value.slice(0, -1);
-        }
+        },
+
+        realizaConta: function realizaConta(){
+            let conta = this.display.value;
+
+            try{
+                conta = eval(conta);
+                if (!conta) {
+                    alert('Conta inválida');
+                    return;
+                }
+                this.display.value = String(conta);
+            }catch(e){
+                alert('Conta inválida')
+                return;
+            }
+        },
 
 
     };
