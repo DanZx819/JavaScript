@@ -24,25 +24,56 @@ function tratarCPF(cpf){
     return {cpfTratado: cpfArrayTratado, fnDigito: fnDigito};
 
 }
-
-const cpfT = tratarCPF(cpf);
-
-console.log(cpfT.cpfTratado, cpfT.fnDigito);
-
-function multCpf(cpfTratado, fnDigito){
+function multCpf1(cpfTratado, fnDigito){
     let resultado = 0
     let indice = 0
     for(let mult = 10; mult > 2; mult--){
         resultado += mult * cpfTratado[indice];
-        console.log(cpfTratado[indice] + '*' + mult)
-        console.log(resultado)
         
         indice ++;
     }
     return {resultado: resultado};
 }
 
-const n = multCpf(cpfT.cpfTratado);
+function primeiroDigito(num){
+    
+    let res = 11 - (num % 11);
+    
+    if (res > 9) {
+        res = 0;
+    }
+    return {resultado: res}
+}
 
-const valCpf = validaCPF(n);
-console.log(n.resultado)
+
+
+function multCpf2(cpfTratado, fnDigito){
+    let resultado = 0
+    let indice = 0
+    for(let mult = 11; mult > 2; mult--){
+        resultado += mult * cpfTratado[indice];
+        console.log(resultado)
+        indice ++;
+    }
+    return {resultado: resultado};
+}
+
+
+
+
+
+
+
+
+const cpfT = tratarCPF(cpf);
+
+// console.log(cpfT.cpfTratado, cpfT.fnDigito);
+
+
+
+const n = multCpf1(cpfT.cpfTratado);
+const n2 = multCpf2(cpfT.cpfTratado)
+
+const primeroDgt = primeiroDigito(n.resultado);
+console.log(`${n.resultado}, ${n2.resultado}`);
+
