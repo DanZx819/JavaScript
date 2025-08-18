@@ -97,12 +97,6 @@ function ValidaCpf(cpf,dgt1, dgt2){
     }
     
 }
-
-
-
-
-
-
 const cpfT = tratarCPF(cpf);
 
 const n = multCpf1(cpfT.cpfTratado);
