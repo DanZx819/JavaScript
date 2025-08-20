@@ -25,7 +25,6 @@ class ValidaFormulario{
         let valid = true;
         
         for(let errorText of this.formulario.querySelectorAll('.error-text')){
-
             errorText.remove();
         }
 
