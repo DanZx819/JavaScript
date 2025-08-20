@@ -9,7 +9,7 @@ function Livro(titulo, autor, ano, emprestado = false) {
     this.emprestado = emprestado;
 };
 
-Livro.prototype.detalhes = function () {
+Livro.prototype.detalhes = function() {
     let emp = 'Não';
     if (this.emprestado === true) {
         emp = 'Sim';
@@ -17,7 +17,7 @@ Livro.prototype.detalhes = function () {
     console.log(`Titulo:${this.titulo} | Autor:${this.autor} | Lançamento:${this.ano} | Emprestado: ${emp}`);
 }
 
-Livro.prototype.emprestar = function () {
+Livro.prototype.emprestar = function() {
     if (this.emprestado === true) {
         console.log('Este livro já está emprestado')
         return;
@@ -26,7 +26,7 @@ Livro.prototype.emprestar = function () {
 }
 
 
-Livro.prototype.devolver = function () {
+Livro.prototype.devolver = function() {
     return this.emprestado = false;
 }
 
@@ -36,11 +36,11 @@ function Biblioteca(nome) {
 }
 
 
-Biblioteca.prototype.adicionar = function (livro) {
+Biblioteca.prototype.adicionar = function(livro) {
     this.livros.push(livro);
 }
 
-Biblioteca.prototype.listar = function () {
+Biblioteca.prototype.listar = function() {
     let emp = 'Não';
     for (livro of this.livros) {
         if (livro.emprestado === true) {
@@ -51,7 +51,7 @@ Biblioteca.prototype.listar = function () {
     }
 }
 
-Biblioteca.prototype.buscar = function (titulo) {
+Biblioteca.prototype.buscar = function(titulo) {
 
     console.log(`Resultado da busca:`)
     let cont = 0;
@@ -69,12 +69,12 @@ Biblioteca.prototype.buscar = function (titulo) {
 
 }
 
-const biblioteca = new Biblioteca('Pau grande');
-const livro1 = new Livro('Sexo 2', 'Rorato', '2025',)
-const livro2 = new Livro('Sexo 3', 'Rorato', '2025',)
-const livro3 = new Livro('Sexo 1', 'Rorato', '2025',)
-const livro4 = new Livro('Sexo 4', 'Rorato', '2025',)
-const livro5 = new Livro('Sexo 4', 'Rorato', '2025',)
+const biblioteca = new Biblioteca('Biblioteca 1');
+const livro1 = new Livro('Livro', 'Rorato', '2025', )
+const livro2 = new Livro('Livro 3', 'Rorato', '2025', )
+const livro3 = new Livro('Livro 1', 'Rorato', '2025', )
+const livro4 = new Livro('Livro 4', 'Rorato', '2025', )
+const livro5 = new Livro('Livro 4', 'Rorato', '2025', )
 
 biblioteca.adicionar(livro1);
 biblioteca.adicionar(livro2);
@@ -88,4 +88,4 @@ livro3.emprestar()
 
 biblioteca.listar();
 
-biblioteca.buscar('Sexo 4')
+biblioteca.buscar('Livro 4')
