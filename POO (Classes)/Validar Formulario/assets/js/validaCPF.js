@@ -64,8 +64,3 @@ class ValidaCPF{
     }
 }
 
-const validaCPF = new ValidaCPF('070.987.720-03');
-
-if (validaCPF.valida()) {
-    console.log(`CPF valido | ${validaCPF.cpfEnviado}`)
-}
