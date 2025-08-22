@@ -1,17 +1,17 @@
-class ValidaFormulario{
-    constructor(){
+class ValidaFormulario {
+    constructor() {
         this.formulario = document.querySelector('.formulario');
         this.eventos();
     }
 
-    eventos(){
-        this.formulario.addEventListener('submit', e =>{
+    eventos() {
+        this.formulario.addEventListener('submit', e => {
             this.handleSubmit(e);
         });
     }
 
-    handleSubmit(e){
-        e.preventDefault();
+    handleSubmit(e) {
+        e.preventDefault(); //Para o evento padrão 
         const camposValidos = this.camposSaoValidos();
         const senhasValidas = this.senhaSaoValidas();
 
@@ -21,14 +21,14 @@ class ValidaFormulario{
         }
     }
 
-    camposSaoValidos(){
+    camposSaoValidos() {
         let valid = true;
-        
-        for(let errorText of this.formulario.querySelectorAll('.error-text')){
+
+        for (let errorText of this.formulario.querySelectorAll('.error-text')) {
             errorText.remove();
         }
 
-        for(let campo of this.formulario.querySelectorAll('.validar')){
+        for (let campo of this.formulario.querySelectorAll('.validar')) {
             const label = campo.previousElementSibling.innerText;
             if (!campo.value) {
                 this.criaErro(campo, `Campo ${label} não pode estar em branco.`)
@@ -49,7 +49,7 @@ class ValidaFormulario{
         }
         return valid;
     }
-    senhaSaoValidas(){
+    senhaSaoValidas() {
         let valid = true;
         const senha = this.formulario.querySelector('.senha');
         const repetirSenha = this.formulario.querySelector('.repetir-senha');
@@ -67,7 +67,7 @@ class ValidaFormulario{
         return valid;
     }
 
-    validaUsuario(campo){
+    validaUsuario(campo) {
         const usuario = campo.value;
         let valid = true;
         if (usuario.length < 3 || usuario.length > 12) {
@@ -81,16 +81,16 @@ class ValidaFormulario{
         }
         return true;
     }
-    validaCPF(campo){
+    validaCPF(campo) {
         const cpf = new ValidaCPF(campo.value)
 
-        if(!cpf.valida()){
+        if (!cpf.valida()) {
             this.criaErro(campo, 'CPF inválido')
             return false;
         }
         return true;
     }
-    criaErro(campo, msg){
+    criaErro(campo, msg) {
         const div = document.createElement('div');
         div.innerHTML = msg;
         div.classList.add('error-text');
