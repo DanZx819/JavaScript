@@ -33,6 +33,14 @@ class Programador extends Funcionario {
     verSalario() {
         return console.log(`Salario Programador R$${this.salarioBase += this.projetos * 100}`)
     }
+    adicionarProjeto(projetos) {
+        if (typeof projetos !== 'number') {
+            throw new TypeError("Envie um número!");
+            return;
+
+        }
+        this.projetos += projetos;
+    }
 }
 const func = new Funcionario('Daniel', 1000);
 
@@ -43,4 +51,6 @@ const gerent = new Gerente('Daniel', 1000);
 gerent.verSalario();
 
 const prog = new Programador('Daniel', 2000, 10);
+prog.verSalario()
+prog.adicionarProjeto(2)
 prog.verSalario()
