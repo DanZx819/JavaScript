@@ -1,4 +1,4 @@
-const mod1 = require('./mod');
+const mod1 = require('./B/C/D/mod');
 const mult = mod1.mult;
 const Cachorro = mod1.Cachorro;
 
