@@ -1,0 +1,20 @@
+<%- include('includes/head'); %>
+<section class="container">
+  <h1>
+    <% if(typeof titulo !== 'undefined') { %> <%= titulo %><% } else{ %> Titulo
+    não enviado<% } %>
+    <br />
+    <% numeros.forEach(num =>{%> <%=num %><br />
+    <%});%>
+    <%= varLocal %>
+  </h1>
+
+  <form action="/" method="post">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label for="">Cliente</label>
+    <input type="text" name="cliente" />
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<%- include('includes/footer'); %>
