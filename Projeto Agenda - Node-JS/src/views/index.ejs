@@ -1,20 +1,49 @@
-<%- include('includes/head'); %>
-<section class="container">
-  <h1>
-    <% if(typeof titulo !== 'undefined') { %> <%= titulo %><% } else{ %> Titulo
-    não enviado<% } %>
-    <br />
-    <% numeros.forEach(num =>{%> <%=num %><br />
-    <%});%>
-    <%= varLocal %>
-  </h1>
+<%- include('./includes/head') %> 
+<%- include('./includes/nav') %>
 
-  <form action="/" method="post">
-    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-    <label for="">Cliente</label>
-    <input type="text" name="cliente" />
-    <button type="submit">Enviar</button>
-  </form>
-</section>
+<div class="container">
+  <div class="row">
+    <div class="clo-lg-2"></div>
+    <div class="clo-lg-8 my-5">
+      <h1 class="display-1 text-center">Agenda</h1>
+      <p class="text-center lead">Seus contatos estão abaixo</p>
 
-<%- include('includes/footer'); %>
+      <div class="row my-3" ><div class="col">
+        <div class="alert alert-danger">Um erro qualquer</div>
+      </div>
+
+      <div class="responsive-table my-3">
+        <table class="table">
+          <tr>
+            <td>Daniel</td>
+            <td>Zanchetta</td>
+            <td>18996830098</td>
+            <td>daniel@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Daniel</td>
+            <td>Zanchetta</td>
+            <td>18996830098</td>
+            <td>daniel@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Daniel</td>
+            <td>Zanchetta</td>
+            <td>18996830098</td>
+            <td>daniel@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Daniel</td>
+            <td>Zanchetta</td>
+            <td>18996830098</td>
+            <td>daniel@gmail.com</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+    <div class="clo-lg-2"></div>
+  </div>
+</div>
+
+<%- include('./includes/footer') %>
