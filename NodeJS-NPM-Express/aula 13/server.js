@@ -15,7 +15,9 @@ app.set('view engine', 'ejs');
 
 
 //Nossos Próprios Middlewares
+
 app.use(middlewareGlobal);
+
 app.use(routes);
 
 const porta = 3000
