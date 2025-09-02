@@ -54,14 +54,17 @@ exports.edit = async function (req, res) {
 
     if (contato.errors.length > 0) {
       req.flash("errors", contato.errors);
-      req.session.save(() => res.redirect(`/contato/${contato.contato._id}`));
-      return;
+      return res.render("contato", {
+        contato: req.body, // mantém os dados que o usuário digitou
+        errors: contato.errors,
+        csrfToken: req.csrfToken(),
+      });
     }
 
     req.flash("success", "Contato Editado com sucesso");
     req.session.save(() => res.redirect(`/contato/${contato.contato._id}`));
     return;
   } catch (e) {
-    console.log(e);
+    console.log(e)
   }
 };
