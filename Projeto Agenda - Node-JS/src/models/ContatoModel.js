@@ -45,7 +45,7 @@ class Contato {
     }
   }
 
-  async buscaPorId(id){
+  static async buscaPorId(id){
     const user = await ContatoModel.findById(id);
     return user;
   }

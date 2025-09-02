@@ -12,19 +12,19 @@
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
         <div class="form-group">
           <label>Nome</label>
-          <input type="text" class="form-control" name="nome" />
+          <input type="text" class="form-control" name="nome" value="<%= contato.nome  %>"/>
         </div>
         <div class="form-group">
           <label>Sobrenome</label>
-          <input type="text" class="form-control" name="sobrenome" />
+          <input type="text" class="form-control" name="sobrenome" value="<%= contato.sobrenome  %>"/>
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input type="email" class="form-control" name="email" />
+          <input type="email" class="form-control" name="email"value="<%= contato.email  %>" />
         </div>
         <div class="form-group">
           <label>Telefone</label>
-          <input type="tel" class="form-control" name="telefone" />
+          <input type="tel" class="form-control" name="telefone" value="<%= contato.telefone  %>"/>
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar</button>

@@ -1,7 +1,9 @@
 const Contato = require("../models/ContatoModel");
 
 exports.index = function (req, res) {
-  res.render("contato");
+  res.render("contato", {
+    contato: {}
+  });
 };
 
 exports.register = async function (req, res) {
@@ -19,20 +21,24 @@ exports.register = async function (req, res) {
     return;
   } catch (e) {
     console.log(e);
-    return res.render('./error/404')
+    return res.render("./error/404");
   }
 };
 
-exports.editIndex = (req, res) =>{
-    if (!req.params.id) {
-        return res.render('./error/404')
-    }
-
-    const contato = new Contato(req.body);
-    const user = contato.buscaPorId(req.params.id);
-
+exports.editIndex = async (req, res) => {
+  if (!req.params.id) {
+    return res.render("./error/404");
+  }
+  try {
+    const user = await Contato.buscaPorId(req.params.id);
     if (!user) {
-        return res.render('./error/404');
+      return res.render("./error/404");
     }
-    res.render('contato');
-}
+    res.render("contato", {
+      contato: user,
+    });
+  } catch (e) {
+    console.log(e);
+    res.render('./error/404');
+  }
+};
