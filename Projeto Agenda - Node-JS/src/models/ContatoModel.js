@@ -50,6 +50,22 @@ class Contato {
     return user;
   }
 
+  async edit(id) {
+    if (typeof id !== "string") return;
+
+    this.valida();
+    if (this.errors.length > 0) return;
+
+    this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, {
+      new: true, // retorna o documento atualizado
+    });
+
+    if (!this.contato) {
+      this.errors.push("Contato não encontrado.");
+    }
+  }
+
+
   cleanUp() {
     for (let key in this.body) {
       if (typeof this.body[key] !== "string") {
