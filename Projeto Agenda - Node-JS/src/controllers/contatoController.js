@@ -1,14 +1,16 @@
 const Contato = require("../models/ContatoModel");
 
 exports.index = function (req, res) {
+
   res.render("contato", {
     contato: {},
-  });
+  })
+  return;
 };
 
 exports.register = async function (req, res) {
   try {
-    const contato = new Contato(req.body);
+    const contato = new Contato({ ...req.body, user: req.session.user._id });
     await contato.register();
     if (contato.errors.length > 0) {
       req.flash("errors", contato.errors);
@@ -49,7 +51,10 @@ exports.edit = async function (req, res) {
   }
 
   try {
-    const contato = new Contato(req.body);
+    const contato = new Contato({
+      ...req.body,
+      user: req.session.user._id,
+    });
     await contato.edit(req.params.id);
 
     if (contato.errors.length > 0) {
@@ -65,6 +70,12 @@ exports.edit = async function (req, res) {
     req.session.save(() => res.redirect(`/contato/${contato.contato._id}`));
     return;
   } catch (e) {
-    console.log(e)
+    console.log(e);
+  }
+
+  exports.delete = (req, res) =>{
+    if (!req.params.id) {
+      return res.render('./error/404')
+    }
   }
 };

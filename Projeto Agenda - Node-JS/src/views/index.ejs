@@ -9,15 +9,18 @@
       <p class="text-center lead">Seus contatos estão abaixo</p>
 
       <%- include('./includes/messages')%>
-      <p><% user %></p>
+      <p>Seus contatos abaixo</p>
 
       <div class="responsive-table my-3">
         <table class="table">
           <tr>
-            <td>Daniel</td>
-            <td>Zanchetta</td>
-            <td>18996830098</td>
-            <td>daniel@gmail.com</td>
+            <% contatos.forEach((e) => {%>
+            <td><%= e.nome%></td>
+            <td><%= e.sobrenome%></td>
+            <td><%= e.email%></td>
+            <td><%= e.telefone%></td>
+            <td><button><a class="btn btn-danger" href="/contato/delete/<%= e.id %>">Deletar</a></button></td>
+            <%})%>
           </tr>
         </table>
       </div>
