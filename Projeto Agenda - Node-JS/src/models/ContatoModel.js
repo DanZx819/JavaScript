@@ -7,8 +7,8 @@ const ContatoSchema = new mongoose.Schema({
   sobrenome: { type: String },
   email: { type: String },
   telefone: { type: String },
-  criadoEm: {type: Date, default: Date.now},
-  user: {type: mongoose.Schema.Types.ObjectId, ref: "User", required:true}
+  criadoEm: { type: Date, default: Date.now },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 const ContatoModel = mongoose.model("Contato", ContatoSchema);
@@ -24,7 +24,7 @@ class Contato {
     this.valida();
 
     if (this.errors.length > 0) {
-        return;
+      return;
     }
 
     this.contato = await ContatoModel.create(this.body);
@@ -38,15 +38,15 @@ class Contato {
       this.errors.push("E-mail inválido");
     }
     if (!this.body.nome) {
-        this.errors.push('Nome é um campo obrigatório')
+      this.errors.push("Nome é um campo obrigatório");
     }
 
     if (!this.body.email && !this.body.telefone) {
-        this.errors.push('Pelo menos um contato precisa ser enviado');
+      this.errors.push("Pelo menos um contato precisa ser enviado");
     }
   }
 
-  static async buscaPorId(id){
+  static async buscaPorId(id) {
     const user = await ContatoModel.findById(id);
     return user;
   }
@@ -66,18 +66,17 @@ class Contato {
     }
   }
 
-  static async buscaContato(userId){
-    const contatos = await ContatoModel.find({user: userId});
+  static async buscaContato(userId) {
+    const contatos = await ContatoModel.find({ user: userId });
 
     return contatos;
   }
 
-  static async deletaContatao(id){
-    if (typeof id !== 'string') {
-      return;
-    }
-
-    return await Contato.findByIdAndDelete(id);
+  static async delete(id) {
+    if (typeof id !== "string") return;
+    console.log(id)
+    const contato = await ContatoModel.findOneAndDelete(id);
+    return contato;
   }
   cleanUp() {
     for (let key in this.body) {

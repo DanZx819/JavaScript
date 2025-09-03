@@ -1,5 +1,4 @@
-<%- include('./includes/head') %> 
-<%- include('./includes/nav') %>
+<%- include('./includes/head') %> <%- include('./includes/nav') %>
 
 <div class="container">
   <div class="row">
@@ -19,12 +18,16 @@
             <td><%= e.sobrenome%></td>
             <td><%= e.email%></td>
             <td><%= e.telefone%></td>
-            <td><button><a class="btn btn-danger" href="/contato/delete/<%= e.id %>">Deletar</a></button></td>
+            <td>
+              
+              <form action="/contato/delete/<%= e._id %>" method="get">
+                <button type="submit" class="btn btn-danger">Excluir</button>
+              </form>
+            </td>
             <%})%>
           </tr>
         </table>
       </div>
-
     </div>
     <div class="clo-lg-2"></div>
   </div>
