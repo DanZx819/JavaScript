@@ -18,7 +18,7 @@ exports.register = async function (req, res) {
     }
 
     req.flash("success", "Contato Registrado com sucesso");
-    req.session.save(() => res.redirect(`/contato/${contato.contato._id}`));
+    req.session.save(() => res.redirect(`/`));
     return;
   } catch (e) {
     console.log(e);

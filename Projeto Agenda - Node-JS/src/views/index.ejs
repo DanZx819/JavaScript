@@ -19,13 +19,12 @@
             <td><%= e.email%></td>
             <td><%= e.telefone%></td>
             <td>
-              
               <form action="/contato/delete/<%= e._id %>" method="get">
                 <button type="submit" class="btn btn-danger">Excluir</button>
               </form>
             </td>
-            <%})%>
           </tr>
+          <%})%>
         </table>
       </div>
     </div>
