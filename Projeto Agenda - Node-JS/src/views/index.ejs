@@ -8,7 +8,7 @@
       <p class="text-center lead">Seus contatos estão abaixo</p>
 
       <%- include('./includes/messages')%>
-      <p>Seus contatos abaixo</p>
+     
 
       <div class="responsive-table my-3">
         <table class="table">
@@ -19,10 +19,12 @@
             <td><%= e.email%></td>
             <td><%= e.telefone%></td>
             <td>
-              <form action="/contato/delete/<%= e._id %>" method="get">
-                <button type="submit" class="btn btn-danger">Excluir</button>
-              </form>
+              <a class="btn btn-info text-white" href="/contato/<%= e._id %>">Editar</a>
             </td>
+            <td>
+              <a href="/contato/delete/<%= e._id %>" class="btn btn-danger">Excluir</a>
+            </td>
+
           </tr>
           <%})%>
         </table>

@@ -72,12 +72,15 @@ class Contato {
     return contatos;
   }
 
+
   static async delete(id) {
     if (typeof id !== "string") return;
-    console.log(id)
     const contato = await ContatoModel.findOneAndDelete(id);
     return contato;
   }
+
+
+
   cleanUp() {
     for (let key in this.body) {
       if (typeof this.body[key] !== "string") {

@@ -66,12 +66,15 @@ exports.edit = async function (req, res) {
     }
 
     req.flash("success", "Contato Editado com sucesso");
-    req.session.save(() => res.redirect(`/contato/${contato.contato._id}`));
+    req.session.save(() => res.redirect(`/`));
     return;
   } catch (e) {
     console.log(e);
   }
 };
+
+
+
 exports.delete = async (req, res) => {
   if (!req.params.id) return res.render('./error/404')
 
