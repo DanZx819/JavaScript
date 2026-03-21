@@ -2,7 +2,7 @@
 
 const numeros = [5, 50, 80, 1,2,3,5,8,7,11,15,22,27];
 //Some todos os números (reduce)
-const total = numeros.reduce((acumulador, valor)=>{
+/* const total = numeros.reduce((acumulador, valor)=>{
     return acumulador + valor;
 }, 0)
 
@@ -16,7 +16,7 @@ const somarPares = pares.reduce((acumulador, valor) =>{
 
 const dobro = numeros.map((valor) =>{
     return valor * 2;
-})
+}) */
 /* console.log(pares);
 console.log(somarPares)
 console.log(total);
@@ -38,4 +38,19 @@ const pessoaMaisVelha = pessoas.reduce((acumulador, obj) =>{
     return acumulador
 });
 
-console.log(pessoaMaisVelha)
+/* console.log(pessoaMaisVelha) */
+
+//Filter + Map + Reduce
+
+const numerosPares= numeros.filter((valor)=>{
+    return valor % 2 === 0;
+}).map((valor) =>{
+    return valor * 2;
+}).reduce((acc, val) =>{
+    return acc + val;
+})
+//[ 50, 80, 2, 8, 22 ]
+//[ 100, 160, 4, 16, 44 ]
+//324
+console.log(numerosPares);
+
